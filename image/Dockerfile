@@ -1,4 +1,4 @@
-FROM ubuntu:12.04
+FROM racker/precise-with-updates
 MAINTAINER Phusion <info@phusion.nl>
 
 ENV HOME /root
