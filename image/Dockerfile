@@ -5,9 +5,12 @@ ENV HOME /root
 RUN mkdir /build
 ADD . /build
 
-RUN bash /build/prepare.sh && \
-	bash /build/system_services.sh && \
-	bash /build/utilities.sh && \
-	bash /build/cleanup.sh
+# HACK: quay.io changes permissions and ownership for some reason
+RUN chmod +x /build/{*.sh,enable_insecure_key,my_init,setuser,runit/*} && chown -R root:root /build
+
+RUN /build/prepare.sh && \
+	/build/system_services.sh && \
+	/build/utilities.sh && \
+	/build/cleanup.sh
 
 CMD ["/sbin/my_init"]
