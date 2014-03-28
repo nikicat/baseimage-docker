@@ -1,4 +1,4 @@
-NAME = phusion/baseimage
+NAME = nikicat/baseimage
 VERSION = 0.9.9
 
 .PHONY: all build test tag_latest release ssh
