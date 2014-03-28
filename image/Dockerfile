@@ -5,8 +5,8 @@ ENV HOME /root
 RUN mkdir /build
 ADD . /build
 
-# HACK: quay.io changes permissions and ownership for some reason
-RUN chmod +x /build/{*.sh,enable_insecure_key,my_init,setuser,runit/*} && chown -R root:root /build
+# HACK: quay.io drops permissions and ownership because of using zip archives
+RUN bash -c 'chmod +x /build/{*.sh,enable_insecure_key,my_init,setuser,runit/*} && chown -R root:root /build'
 
 RUN /build/prepare.sh && \
 	/build/system_services.sh && \
