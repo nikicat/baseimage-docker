@@ -5,9 +5,9 @@ ENV HOME /root
 RUN mkdir /build
 ADD . /build
 
-RUN /build/prepare.sh && \
-	/build/system_services.sh && \
-	/build/utilities.sh && \
-	/build/cleanup.sh
+RUN bash /build/prepare.sh && \
+	bash /build/system_services.sh && \
+	bash /build/utilities.sh && \
+	bash /build/cleanup.sh
 
 CMD ["/sbin/my_init"]
